@@ -1,0 +1,9 @@
+name = "prisma-d1-rpc-sample"
+main = "src/index.ts"
+compatibility_date = "2022-04-05"
+compatibility_flags = ["nodejs_compat"]
+
+[[d1_databases]]
+binding = "DB" # i.e. available in your Worker on env.DB
+database_name = "prisma-rpc-db"
+database_id = "__YOUR_D1_DATABASE_ID__"
