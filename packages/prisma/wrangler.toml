@@ -6,4 +6,5 @@ compatibility_flags = ["nodejs_compat"]
 [[d1_databases]]
 binding = "DB" # i.e. available in your Worker on env.DB
 database_name = "prisma-rpc-db"
-database_id = "__YOUR_D1_DATABASE_ID__"
+database_id = "80b8e388-0009-4f40-9f64-bfc0728cb3b6"
+#database_id = "__YOUR_D1_DATABASE_ID__"
