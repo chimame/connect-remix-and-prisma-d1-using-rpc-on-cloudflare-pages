@@ -1,6 +1,7 @@
 {
   "name": "@rpc-sample/prisma",
   "scripts": {
+    "dev": "wrangler dev",
     "migrate:prisma": "prisma migrate dev",
     "migrate:d1:local": "zx ./scripts/migrate.mjs"
   },

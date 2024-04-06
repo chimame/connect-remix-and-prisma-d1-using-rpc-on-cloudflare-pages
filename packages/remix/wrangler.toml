@@ -1,0 +1,6 @@
+name = "remix-rpc-sample"
+
+[[services]]
+binding = "PRISMA_SERVICE"
+service = "prisma-d1-rpc-sample"
+entrypoint = "PrismaService"

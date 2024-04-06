@@ -3,7 +3,13 @@
     "packages/*"
   ],
   "scripts": {
-    "dev": "yarn workspace @rpc-sample/remix dev"
+    "dev": "concurrently \"yarn run dev:prisma\" \"yarn run dev:remix:build && yarn run dev:remix:start\"",
+    "dev:prisma": "yarn workspace @rpc-sample/prisma dev",
+    "dev:remix:build": "yarn workspace @rpc-sample/remix build",
+    "dev:remix:start": "yarn workspace @rpc-sample/remix start"
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2"
   },
   "packageManager": "yarn@4.1.1+sha256.f3cc0eda8e5560e529c7147565b30faa43b4e472d90e8634d7134a37c7f59781"
 }

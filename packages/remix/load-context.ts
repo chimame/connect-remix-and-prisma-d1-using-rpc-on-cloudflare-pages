@@ -1,12 +1,9 @@
 import { type PlatformProxy } from "wrangler";
+import type { PrismaService } from "@rpc-sample/prisma/src";
 
-// When using `wrangler.toml` to configure bindings,
-// `wrangler types` will generate types for those bindings
-// into the global `Env` interface.
-// Need this empty interface so that typechecking passes
-// even if no `wrangler.toml` exists.
-// eslint-disable-next-line @typescript-eslint/no-empty-interface
-interface Env {}
+interface Env {
+	PRISMA_SERVICE: Service<PrismaService>;
+}
 
 type Cloudflare = Omit<PlatformProxy<Env>, "dispose">;
 
