@@ -5,7 +5,7 @@ export interface Env {
   DB: D1Database,
 }
 
-export class PrismaService extends WorkerEntrypoint<Env> {
+export class UserService extends WorkerEntrypoint<Env> {
   fetchUsers() {
     const db = connection(this.env.DB)
     return db.user.findMany();

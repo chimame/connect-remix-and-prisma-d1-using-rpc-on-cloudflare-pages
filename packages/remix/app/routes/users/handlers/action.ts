@@ -5,7 +5,7 @@ export const action = async ({ request, context }: ActionFunctionArgs) => {
   const name = formData.get("name") as string;
   const email = formData.get("email") as string;
 
-  await context.cloudflare.env.PRISMA_SERVICE.createUser({ name, email });
+  await context.cloudflare.env.USER_SERVICE.createUser({ name, email });
 
   return null
 }

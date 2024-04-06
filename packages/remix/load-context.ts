@@ -1,8 +1,8 @@
 import { type PlatformProxy } from "wrangler";
-import type { PrismaService } from "@rpc-sample/prisma/src";
+import type { UserService } from "@rpc-sample/prisma/src";
 
 interface Env {
-	PRISMA_SERVICE: Service<PrismaService>;
+	USER_SERVICE: Service<UserService>;
 }
 
 type Cloudflare = Omit<PlatformProxy<Env>, "dispose">;
