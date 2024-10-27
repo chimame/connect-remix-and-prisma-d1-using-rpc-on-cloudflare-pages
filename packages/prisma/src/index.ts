@@ -1,19 +1,37 @@
 import { WorkerEntrypoint } from "cloudflare:workers";
-import { connection } from "./database/client";
+import { UserGenericService } from "./genericServices";
 
-export interface Env {
-  DB: D1Database,
-}
+type PrismaMethods = {
+  findUnique: unknown;
+  findUniqueOrThrow: unknown;
+  findFirst: unknown;
+  findFirstOrThrow: unknown;
+  findMany: unknown;
+  create: unknown;
+  update: unknown;
+  upsert: unknown;
+  delete: unknown;
+  createMany: unknown;
+  createManyAndReturn: unknown;
+  updateMany: unknown;
+  deleteMany: unknown;
+  count: unknown;
+  aggregate: unknown;
+  groupBy: unknown;
+};
 
-export class UserService extends WorkerEntrypoint<Env> {
+export type CustomService<T extends WorkerEntrypoint & PrismaMethods> = Service<
+  Omit<T, keyof PrismaMethods>
+> &
+  Pick<T, keyof PrismaMethods>;
+
+export class UserService extends UserGenericService {
   fetchUsers() {
-    const db = connection(this.env.DB)
-    return db.user.findMany();
+    return this.db.user.findMany();
   }
 
-  async createUser(data: { name: string, email: string }) {
-    const db = connection(this.env.DB)
-    const user = await db.user.create({
+  async createUser(data: { name: string; email: string }) {
+    const user = await this.db.user.create({
       data,
     });
 
